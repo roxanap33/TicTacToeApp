@@ -6,6 +6,12 @@ import Player from "./components/Player";
 function App() {
   const [activePlayer, setActivePlayer] = useState("X");
 
+  function handleSelectSquare() {
+    setActivePlayer((currentlyActivePlayer) =>
+      currentlyActivePlayer === "X" ? "O" : "X"
+    );
+  }
+
   return (
     <main>
       <div id="game-container">
@@ -21,7 +27,10 @@ function App() {
             isActive={activePlayer === "O"}
           />
         </ol>
-        <GameBoard />
+        <GameBoard
+          onSelectSquare={handleSelectSquare}
+          activePlayerSymbol={activePlayer}
+        />
       </div>
     </main>
   );
